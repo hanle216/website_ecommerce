@@ -1,0 +1,58 @@
+### Ghi chú
+GET http://localhost:8080
+### Đọc nội dung từ tập tin 
+GET http://localhost:8080/LIST_TIVI
+###
+GET http://localhost:8080/LIST_MOBILE
+###
+GET http://localhost:8080/LIST_FOOD
+###
+GET http://localhost:8080/LIST_STORE
+###
+GET http://localhost:8080/LIST_LAPTOP
+###
+GET http://localhost:8080/LIST_TABLET
+### GET Images
+GET http://localhost:8080/CA_PHE_1.png
+###
+POST http://localhost:8080/LOGIN
+Content-Type: "application/json"
+
+{
+    "Ten_Dang_nhap": "QL_102",
+    "Mat_khau": "QL_102",
+}
+### 
+POST http://localhost:8080/CONTACT
+Content-Type: "application/json"
+###
+POST http://localhost:8080/INSERT_USER
+Content-Type: "application/json"
+
+{
+        "Ho_ten": "Lê Thanh Mai Hân",
+        "Ma_so": "QL_101",
+        "Ten_Dang_nhap": "QL_101",
+        "Mat_khau": "QL_101",
+        "Nhom_Nguoi_dung": {
+            "Ten": "Kiểm thử phần mềm",
+            "Ma_so": "NHAN_VIEN_KIEM_THU"
+        }
+    }
+###Update dữ liệu
+PUT http://localhost:8080/UPDATE_USER
+Content-Type: application/json
+
+{
+     "Ho_ten": "Lập trình viên Javascript",
+        "Ma_so": "QL_103",
+        "Ten_Dang_nhap": "developerjs",
+        "Mat_khau": "bws@1223"
+}
+###
+DELETE http://localhost:8080/DELETE_USER
+Content-Type: application/json
+
+{
+    "Ma_so": "QL_103"
+}

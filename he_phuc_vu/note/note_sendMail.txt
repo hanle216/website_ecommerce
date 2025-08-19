@@ -1,0 +1,64 @@
+Mail phải chứng thực hai bước - (Lấy mật khẩu ứng dụng)
+https://myaccount.google.com/apppasswords 
+
+Hướng dẫn Dịch vụ (Server)
+
+b1 Cài đặt gói: npm i nodemailer --s
+================================
+b2 Tạo tập tin sendMail.js trong thư mục libs
+
+import dotenv from 'dotenv';
+dotenv.config();
+import { createTransport } from "nodemailer";
+
+class handleMail {
+    sendGMail(from, to, subject, body) {
+        let transporter = createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.USER_GMAIL,
+                pass: process.env.PWD_GMAIL
+            }
+        });
+        let mailOptions = {
+            from: `SuLand Product <${from}>`,
+            to: to,
+            subject, subject,
+            html: body
+        }
+        //Gọi phương thức sendMal -> trả về dạng Promoise
+        return transporter.sendMail(mailOptions);
+    }
+}
+var sendMail = new handleMail();
+export default sendMail;
+
+
+========================================================
+
+b3 // Khai báo thư viện sendMail.js trong tập tin server.js
+import sendMail from "./libs/sendMail.js";
+
+Tổng quan quy trình gửi mail:
+[Người dùng] 
+   |
+   | (Nhập thông tin & click Send)
+   v
+[Trình duyệt (contact.js)] -- JSON (title, body) -->
+   |
+   v
+[Server Node.js (server.js)] 
+   |
+   | (Gọi sendMail.sendGMail)
+   v
+[Nodemailer] --> [SMTP Gmail] --> [Hộp thư người nhận]
+   |
+   v
+(Trả kết quả JSON)
+   |
+   v
+[Trình duyệt] -> Hiển thị thông báo
+
+
+
+
