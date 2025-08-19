@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>SuLand Product - Tablets</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <!-- Font Awesome 4 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body>
+  <!-- Header: Logo, Slogan, Address, Phone, Email... -->
+  <div class="jumbotron jumbotron-fluid titillium-web-black" id="displayStore"></div>
+  <!-- Menu: navBar-->
+  <nav class="navbar navbar-expand-sm navbar-light bg-green sticky-top titillium-web-regular">
+    <a class="navbar-brand" href="../home/">SuLand Product</a>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="../home/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="javaScript: void(0)" id="dropdownId" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Collection</a>
+          <div class="dropdown-menu" aria-labelledby="dropdownId">
+            <a class="dropdown-item" href="../tivi/">Television</a>
+            <a class="dropdown-item" href="../mobile/">Mobile</a>
+            <a class="dropdown-item" href="../laptop/">Laptop</a>
+            <a class="dropdown-item" href=".">Tablets</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../about/">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../contact/">Contact</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <!-- Chức năng search -->
+        <input class="form-control mr-sm-2" type="text" id="displaySearch" placeholder="Search by keyword" />
+        <button class="btn btn-sm btn-org my-2 my-sm-0" id="btnSearch" type="button">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+        <a href="javascript:void(0)" onclick="openCart()" class="btn  btn-sm btn-org my-2 my-sm-0 ml-2"
+          title="Open cart"><span id="displayCart">(0) </span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+      </form>
+    </div>
+  </nav>
+  <!-- Chức năng sắp xếp tăng giảm -->
+  <!-- <div class="container mt-3 mb-2">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-end">
+         <button class="btn btn-sm btn-outline-dark mr-3" id="btnPrice" sort="1">Price &DownArrow;</button>
+        <button class="btn btn-sm btn-outline-dark" id="btnName" sort="1">Name &DownArrow;</button>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Content (chia làm 2 cột) Left: 3; Center: 9 -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-3 col-md-3 col-12">
+        <h4 class="border-bottom mt-3">Categories</h4>
+        <div class="list-group" id="displayCateTablet"></div>
+        <h4 class="border-bottom mt-3">Best sellers</h4>
+        <div id="displayCarousel"></div>
+      </div>
+      <div class="col-xl-9 col-md-9 col-12">
+        <div class="row">
+          <h4 class="border-bottom mt-3" id="displayTitleTablet">Total</h4>
+          <div class="row">
+            <div class="col-12 mt-3 mb-3 ml-3">
+              <button class="btn btn-sm btn-outline-dark mr-2" id="btnPrice" sort="1">Price &DownArrow;</button>
+              <button class="btn btn-sm btn-outline-dark" id="btnName" sort="1">Name &DownArrow;</button>
+            </div>
+          </div>
+          <div class="row" id="displayListTablet"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid" id="footer">
+    <div class="row text-center p-3 lead mt-3 titillium-web-light">
+      <div class="col-12">
+        <h6 id="footer-text"></h6>
+        <script>
+          const year = new Date().getFullYear();
+          document.getElementById("footer-text").textContent = `Created by Han Le ${year}`;
+        </script>
+        <span class="m-2"><a href="https://www.facebook.com/">
+            <i class="fa fa-facebook-square" style="color:#1877F2;" aria-hidden="true"></i>
+          </a></span>
+        <span class="m-2"><a href="https://www.instagram.com/">
+            <i class="fa fa-instagram" style="color:#E1306C;" aria-hidden="true"></i>
+          </a></span>
+        <span class="m-2"><a href="https://www.youtube.com/">
+            <i class="fa fa-youtube-play" style="color:#FF0000;" aria-hidden="true"></i>
+          </a></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="../js/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="../js/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="../js/bootstrap.js"></script>
+  <script type="module" src="../libs/store.js"></script>
+  <script src="../libs/cart.js"></script>
+  <script src="../libs/modal.js"></script>
+  <script type="module" src="../libs/tablet.js"></script>
+  <!-- Đồng bộ hoá số lượng item khi click giữa các trang -->
+  <script>
+    if (sessionStorage.getItem("carts") != undefined) {
+      carts = JSON.parse(sessionStorage.getItem("carts"));
+      let totalItems = carts.reduce((sum, item) => sum + item.soLuong, 0);
+      displayCart.innerHTML = `(${totalItems})`;
+    }
+  </script>
+  <!-- Button trigger modal -->
+  <button type="button" id="btnLoad" class="btn btn-primary btn-lg d-none" data-toggle="modal"
+    data-target="#modelIdLoad">
+    Launch
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modelIdLoad" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true"
+    data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="d-flex align-items-center">
+            <strong>Loading...</strong>
+            <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+          </div>
+        </div>
+        <div class="modal-footer d-none">
+          <button type="button" id="btnCloseLoad" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

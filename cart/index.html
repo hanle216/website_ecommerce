@@ -1,0 +1,184 @@
+<script>
+  if (sessionStorage.getItem("carts") == undefined) {
+    window.history.back();
+  }
+</script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>SuLand Product - Shopping cart</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <!-- Font Awesome 4 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+
+<body>
+  <!-- Header: Logo, Slogan, Address, Phone, Email... -->
+  <div class="jumbotron jumbotron-fluid" id="displayStore"></div>
+  <!-- Menu: navBar-->
+  <nav class="navbar navbar-expand-sm navbar-light bg-green sticky-top">
+    <a class="navbar-brand" href="../home/">SuLand Product</a>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="../home/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="javaScript: void(0)" id="dropdownId" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Collection</a>
+          <div class="dropdown-menu" aria-labelledby="dropdownId">
+            <a class="dropdown-item" href="../tivi/">Television</a>
+            <a class="dropdown-item" href="../mobile/">Mobile</a>
+            <a class="dropdown-item" href="../laptop/">Laptop</a>
+            <a class="dropdown-item" href="../tablet/">Tablets</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../about/">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../contact/">Contact</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" />
+        <button class="btn btn-org my-2 my-sm-0" type="submit">Search</button>
+        <a href="javascript:void(0)" onclick="" class="btn btn-org my-2 my-sm-0 ml-2" title="Open cart"><span
+            id="displayCart">(0) </span><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+      </form>
+    </div>
+  </nav>
+  <!-- Card -->
+  <div class="container-fluid">
+    <div class="row p-5">
+      <div class="col-xl-8 col-md-8 col-12">
+        <h4>Shopping cart</h4>
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr class="text-center text-nowrap">
+                <th>Image</th>
+                <th>Product name</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="displayBuyCart"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-xl-4 col-sm-4 col-12">
+        <div class="your-info-box">
+          <h4 class="badge-dark text-white p-2 text-center">Your information</h4>
+        </div>
+
+        <div class="form-group">
+          <label for="fullName">Fullname:</label>
+          <input type="text" class="form-control" placeholder="Fullname" id="fullName">
+        </div>
+
+        <div class="form-group">
+          <label for="phoneNumber">Phone:</label>
+          <input type="text" class="form-control" placeholder="Phone" id="phoneNumber">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="text" class="form-control" placeholder="Email" id="email">
+        </div>
+
+        <div class="form-group">
+          <label for="shippingDate">Shipping date:</label>
+          <input type="date" class="form-control" placeholder="Shipping date" id="shippingDate">
+        </div>
+
+        <div class="form-group">
+          <label for="address">Address:</label>
+          <input type="text" class="form-control" placeholder="Address" id="address">
+        </div>
+        <!-- <div>
+          <button class="btn btn-sm btn-primary" id="continueBuy" onclick="window.history.back()">Continue
+            shoppping</button>
+          <button class="btn btn-sm btn-danger" id="btnYes">Order</button>
+          <button class="btn btn-sm btn-primary" id="btnDelete" onclick="deleteCart()">Delete</button>
+        </div> -->
+        <div class="d-flex justify-content-between mt-3">
+          <div>
+            <button class="btn btn-sm btn-dark" id="continueBuy" onclick="window.history.back()">Continue
+              shopping</button>
+            <button class="btn btn-sm btn-danger d-none" id="btnYesLoad" type="button" disabled>
+              Order <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            </button>
+            <button class="btn btn-sm btn-danger" id="btnYes">Order</button>
+          </div>
+          <div>
+            <button class="btn btn-sm btn-dark" id="btnDelete" onclick="deleteCart()">Delete</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="../js/bootstrap.js"></script>
+  <script type="module" src="../libs/store.js"></script>
+  <script src="../libs/cart.js"></script>
+  <!-- Đồng bộ hoá số lượng item khi click giữa các trang -->
+  <script type="module">
+    import { apiOrder } from "../api/urlAPI.js";
+
+    if (sessionStorage.getItem("carts") != undefined) {
+      carts = JSON.parse(sessionStorage.getItem("carts"));
+      let totalItems = carts.reduce((sum, item) => sum + item.soLuong, 0);
+      displayCart.innerHTML = `(${totalItems})`;
+      exportBuyingProduct(carts);
+    }
+    /* Đặt hàng */
+    document.getElementById("btnYes").onclick = () => {
+      document.getElementById("btnYes").classList.add("d-none"); //sau khi click thì ẩn button này
+      document.getElementById("btnYesLoad").classList.remove("d-none");
+
+      let listOrder = orderProduct();
+      console.log("Danh sách đặt hàng: ", listOrder);
+
+      apiOrder(listOrder).then((result) => {
+        console.log("Result from server:", result); //client nhận được từ server thông qua res.end(JSON.stringify(ketQua));
+        //Gửi mail
+        alert("Thanks for your ordering!\n The order will coming soon.");
+        sessionStorage.removeItem("carts");
+        window.history.back();
+      }).catch((err) => {
+        console.log("Erorr:", err);
+      });
+    }
+
+  </script>
+</body>
+
+</html>
