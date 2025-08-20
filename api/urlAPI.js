@@ -1,5 +1,5 @@
-const URL_SERVICES = "http://localhost:8080"
-const URL_IMG = "http://localhost:8080"
+const URL_SERVICES = "http://localhost:10000"
+const URL_IMG = "http://localhost:10000"
 
 const getAll = (endPoint) => {
     return new Promise((resolve, reject) => {
