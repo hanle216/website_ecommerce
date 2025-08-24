@@ -1,5 +1,5 @@
-const URL_SERVICES = "http://localhost:8080"
-const URL_IMG = "http://localhost:8080"
+const URL_SERVICES = "https://sulandecom.onrender.com"
+const URL_IMG = "https://sulandecom.onrender.com"
 
 const getAll = (endPoint) => {
     return new Promise((resolve, reject) => {

@@ -1,4 +1,4 @@
-let URL_IMG = "http://localhost:8080";
+let URL_IMG = "https://sulandecom.onrender.com";
 let carts = [];
 let list = {}; //biến toàn cục, script ko phải type = module (window.list))
 /* Quy định
